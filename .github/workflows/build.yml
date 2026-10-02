@@ -8,29 +8,12 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - name: Windows
-            os: windows-latest
-            target: win
-          - name: macOS
-            os: macos-latest
-            target: mac
-          - name: Android 32-bit
-            os: ubuntu-latest
-            target: android32
-          - name: Android 64-bit
-            os: ubuntu-latest
-            target: android64
-
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: Windows
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
 
       - uses: geode-sdk/build-geode-mod@main
         with:
-          target: ${{ matrix.config.target }}
+          target: win
