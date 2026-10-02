@@ -8,20 +8,22 @@ on:
 
 jobs:
   build:
-    name: Build Geode Mod
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: win
+            os: windows-latest
+
+    name: ${{ matrix.platform }}
+    runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ninja
-        uses: lukka/get-cmake@latest
-
-      - name: Install Geode CLI
-        uses: geode-sdk/install-geode-cli@main
-
-      - name: Build Mod Manually
-        run: |
-          geode package --platform windows
-        shell: pwsh
+      - name: Build Geode Mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          target: ${{ matrix.platform }}
+          combine: true
