@@ -14,11 +14,16 @@ jobs:
         config:
           - name: Windows
             os: windows-latest
+            target: Win64
           - name: macOS
             os: macos-latest
-          - name: Android
+            target: Mac
+          - name: Android 32-bit
             os: ubuntu-latest
-            target: Android
+            target: Android32
+          - name: Android 64-bit
+            os: ubuntu-latest
+            target: Android64
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
