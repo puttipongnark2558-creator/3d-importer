@@ -19,5 +19,4 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           target: win
-          platform: win
-          sdk: v3.1.0
+          combine: true
