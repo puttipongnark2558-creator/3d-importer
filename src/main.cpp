@@ -1,16 +1,12 @@
 #include <Geode/Geode.hpp>
-#include <Geode/modify/EditorUI.hpp>
 
 using namespace geode::prelude;
 
-class $modify(ImporterEditorUI, EditorUI) {
-    bool init(LevelEditorLayer* editorLayer) {
-        if (!EditorUI::init(editorLayer)) {
-            return false;
-        }
-
-        log::info("3D Model Importer mod loaded successfully into Level Editor!");
-
+#include <Geode/modify/MenuLayer.hpp>
+class $modify(MyMenuLayer, MenuLayer) {
+    bool init() {
+        if (!MenuLayer::init()) return false;
+        log::info("3D Model Importer loaded successfully!");
         return true;
     }
 };

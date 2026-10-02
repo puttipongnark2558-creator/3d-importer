@@ -20,6 +20,5 @@ jobs:
         with:
           target: win
           platform: win
-          cli: latest
           sdk: v3.1.0
           combine: true
