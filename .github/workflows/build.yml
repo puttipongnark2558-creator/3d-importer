@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Windows Build
+    name: Build Geode Mod
     runs-on: windows-latest
 
     steps:
@@ -18,5 +18,5 @@ jobs:
       - name: Build Geode Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          target: win
-          sdk: v3.1.0
+          platform: win
+          combine: true
