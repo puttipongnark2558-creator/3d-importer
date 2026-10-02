@@ -8,4 +8,21 @@ on:
 
 jobs:
   build:
-    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@main
+    strategy:
+      matrix:
+        include:
+          - name: Windows Build
+            os: windows-latest
+            target: win
+
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Geode Mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          target: ${{ matrix.target }}
