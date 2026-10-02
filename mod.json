@@ -5,5 +5,12 @@
   "name": "3D Importer",
   "developer": "puttipongnark2558-creator",
   "description": "Imports 3D models from Blender into Geometry Dash.",
-  "repository": "https://github.com/puttipongnark2558-creator/3d-importer"
+  "repository": "https://github.com/puttipongnark2558-creator/3d-importer",
+  "tags": ["creator", "editor"],
+  "credits": {
+    "Idea": "misterlope, coopertooddum, spu7nix",
+    "Motivation": "coldsandgamer, toopter",
+    "Code Checked By": "Gemini",
+    "Special Note": "Thanks for reading. If you are coldsandgamer, please forgive me, and to others, thank you!"
+  }
 }
