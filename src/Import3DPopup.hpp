@@ -12,7 +12,7 @@ protected:
     CCLabelBMFont* m_pathDisplayLabel = nullptr;
     TextInput* m_groupIdInput = nullptr;
     TextInput* m_simplificationInput = nullptr;
-    bool m_useGradients = true;
+    EventListener<Task<Result<std::filesystem::path>>> m_pickListener;
 
     bool setup() override;
     void onBrowseFile(CCObject* sender);

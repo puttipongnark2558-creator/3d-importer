@@ -15,7 +15,7 @@ Import3DPopup* Import3DPopup::create() {
 bool Import3DPopup::setup() {
     auto winSize = m_mainLayer->getContentSize();
 
-    this->setTitle("3D Model Importer", "goldFont.fnt");
+    this->setTitle("3D Model Importer");
 
     auto subTitle = CCLabelBMFont::create("Dev: misterlope | Idea: spu7nix & coopertooddum", "chatFont.fnt");
     subTitle->setPosition({ winSize.width / 2.0f, winSize.height - 42.0f });
@@ -31,7 +31,7 @@ bool Import3DPopup::setup() {
     browseMenu->setPosition({ 0.0f, 45.0f });
     container->addChild(browseMenu);
 
-    auto browseSpr = ButtonSprite::create("Select .OBJ File", "goldFont.fnt", "GJ_button_04.png", 0.7f);
+    auto browseSpr = ButtonSprite::create("Select .OBJ File");
     auto browseBtn = CCMenuItemSpriteExtra::create(
         browseSpr, this, menu_selector(Import3DPopup::onBrowseFile)
     );
@@ -69,7 +69,7 @@ bool Import3DPopup::setup() {
     buttonMenu->setPosition({ winSize.width / 2.0f, 28.0f });
     m_mainLayer->addChild(buttonMenu);
 
-    auto btnSpr = ButtonSprite::create("Import Model", "goldFont.fnt", "GJ_button_01.png", 0.8f);
+    auto btnSpr = ButtonSprite::create("Import Model");
     auto importBtn = CCMenuItemSpriteExtra::create(
         btnSpr, this, menu_selector(Import3DPopup::onImport)
     );
@@ -82,14 +82,18 @@ void Import3DPopup::onBrowseFile(CCObject* sender) {
     file::FilePickOptions options;
     options.filters.push_back({ "Wavefront 3D Object", { "*.obj" } });
 
-    file::pick(file::PickMode::OpenFile, options).listen([this](Result<std::filesystem::path> res) {
-        if (res) {
-            m_selectedPath = res.unwrap().string();
-            std::filesystem::path p(m_selectedPath);
-            m_pathDisplayLabel->setString(p.filename().string().c_str());
-            m_pathDisplayLabel->setOpacity(255);
+    m_pickListener.bind([this](Task<Result<std::filesystem::path>>::Event* event) {
+        if (auto res = event->getValue()) {
+            if (res->isOk()) {
+                m_selectedPath = res->unwrap().string();
+                std::filesystem::path p(m_selectedPath);
+                m_pathDisplayLabel->setString(p.filename().string().c_str());
+                m_pathDisplayLabel->setOpacity(255);
+            }
         }
     });
+
+    m_pickListener.setFilter(file::pick(file::PickMode::OpenFile, options));
 }
 
 void Import3DPopup::onImport(CCObject* sender) {
@@ -102,7 +106,7 @@ void Import3DPopup::onImport(CCObject* sender) {
     int reductionPercent = utils::numFromString<int>(m_simplificationInput->getString()).value_or(50);
 
     CCPoint center = CCDirector::sharedDirector()->getWinSize() / 2.0f;
-    bool success = OBJImporter::processAndImport(m_selectedPath, startGroupId, reductionPercent, m_useGradients, center);
+    bool success = OBJImporter::processAndImport(m_selectedPath, startGroupId, reductionPercent, true, center);
 
     if (success) {
         FLAlertLayer::create("Success", "3D Model built into GD level successfully!", "OK")->show();
