@@ -23,7 +23,7 @@ bool OBJImporter::processAndImport(const std::string& filepath, int startGroupId
             Face3D f;
             std::string vstr1, vstr2, vstr3;
             ss >> vstr1 >> vstr2 >> vstr3;
-
+            
             auto parseIndex = [](const std::string& s) -> int {
                 std::stringstream vss(s);
                 int idx = 0;
