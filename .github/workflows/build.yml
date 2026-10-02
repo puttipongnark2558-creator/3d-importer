@@ -15,10 +15,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Geode Mod
-        uses: geode-sdk/build-geode-mod@main
-        with:
-          target: win
-          platform: win
-          sdk: v3.1.0
-          combine: true
+      - name: Setup Ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Install Geode CLI
+        uses: geode-sdk/install-geode-cli@main
+
+      - name: Build Mod Manually
+        run: |
+          geode package --platform windows
+        shell: pwsh
