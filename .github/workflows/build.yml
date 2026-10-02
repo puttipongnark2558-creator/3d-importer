@@ -28,5 +28,4 @@ jobs:
 
       - uses: geode-sdk/build-geode-mod@v3
         with:
-          sdk: nightly
           target: ${{ matrix.config.target }}
