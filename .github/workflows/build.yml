@@ -8,14 +8,4 @@ on:
 
 jobs:
   build:
-    name: Build Geode Mod
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up Geode CLI & SDK
-        uses: geode-sdk/build-geode-mod@main
-        with:
-          target: win
+    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@main
