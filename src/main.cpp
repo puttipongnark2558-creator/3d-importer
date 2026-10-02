@@ -1,36 +1,16 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/EditorUI.hpp>
-#include "Import3DPopup.hpp"
 
 using namespace geode::prelude;
 
-class $modify(MyEditorUI, EditorUI) {
+class $modify(ImporterEditorUI, EditorUI) {
     bool init(LevelEditorLayer* editorLayer) {
-        if (!EditorUI::init(editorLayer)) return false;
-
-        auto btnSpr = CircleButtonSprite::createWithSpriteFrameName(
-            "editor_btn01_001.png",
-            1.0f,
-            CircleBaseColor::Green,
-            CircleBaseSize::Small
-        );
-
-        auto btn = CCMenuItemSpriteExtra::create(
-            btnSpr,
-            this,
-            menu_selector(MyEditorUI::on3DImporterBtn)
-        );
-
-        auto menu = this->getChildByID("editor-buttons-menu");
-        if (menu) {
-            menu->addChild(btn);
-            menu->updateLayout();
+        if (!EditorUI::init(editorLayer)) {
+            return false;
         }
 
-        return true;
-    }
+        log::info("3D Model Importer mod loaded successfully into Level Editor!");
 
-    void on3DImporterBtn(CCObject* sender) {
-        Import3DPopup::create()->show();
+        return true;
     }
 };

@@ -1,9 +1,10 @@
 {
-    "geode": "3.1.0",
-    "version": "v1.0.0",
-    "id": "puttipong.3d_importer",
-    "name": "3D Model Importer",
-    "developer": "Juzu Team",
-    "description": "Imports 3D .OBJ files into Geometry Dash level editor as blocks/objects.",
-    "repository": "https://github.com/puttipongnark2558-creator/3d-importer"
+  "geode": "3.1.0",
+  "version": "v1.0.0",
+  "id": "puttipong.3d_importer",
+  "name": "3D Model Importer",
+  "developer": "Juzu Team",
+  "description": "Imports 3D .OBJ models directly into the Geometry Dash level editor as block structures.",
+  "repository": "https://github.com/puttipongnark2558-creator/3d-importer",
+  "tags": ["editor", "utility", "tools"]
 }
