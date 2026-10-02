@@ -18,5 +18,5 @@ jobs:
       - name: Build Geode Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          platform: win
+          target: win
           combine: true
