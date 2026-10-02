@@ -1,9 +1,11 @@
 {
-    "geode": "3.1.0",
+    "geode": "v3.1.0",
     "version": "1.0.0",
     "id": "juzu.3d-importer",
     "name": "3D Model Importer",
     "developer": "Juzu Team",
     "description": "A 3D model importer mod for Geometry Dash",
-    "platforms": ["win"]
+    "platforms": [
+        "win"
+    ]
 }
