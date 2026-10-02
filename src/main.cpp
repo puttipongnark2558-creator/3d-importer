@@ -8,20 +8,29 @@ class $modify(MyEditorUI, EditorUI) {
     bool init(LevelEditorLayer* editorLayer) {
         if (!EditorUI::init(editorLayer)) return false;
 
-        auto sprite = CCSprite::createWithSpriteFrameName("GJ_plusBtn_001.png");
-        auto btn = CCMenuItemSpriteExtra::create(
-            sprite, this, menu_selector(MyEditorUI::onOpen3DImporter)
+        auto btnSpr = CircleButtonSprite::createWithSpriteFrameName(
+            "editor_btn01_001.png",
+            1.0f,
+            CircleBaseColor::Green,
+            CircleBaseSize::Small
         );
 
-        auto menu = CCMenu::create();
-        menu->setPosition({ 35.0f, 180.0f });
-        menu->addChild(btn);
-        this->addChild(menu);
+        auto btn = CCMenuItemSpriteExtra::create(
+            btnSpr,
+            this,
+            menu_selector(MyEditorUI::on3DImporterBtn)
+        );
+
+        auto menu = this->getChildByID("editor-buttons-menu");
+        if (menu) {
+            menu->addChild(btn);
+            menu->updateLayout();
+        }
 
         return true;
     }
 
-    void onOpen3DImporter(CCObject* sender) {
+    void on3DImporterBtn(CCObject* sender) {
         Import3DPopup::create()->show();
     }
 };

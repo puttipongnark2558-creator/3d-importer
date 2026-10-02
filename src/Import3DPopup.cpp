@@ -17,7 +17,7 @@ bool Import3DPopup::setup() {
 
     this->setTitle("3D Model Importer");
 
-    auto subTitle = CCLabelBMFont::create("Dev: misterlope | Idea: spu7nix & coopertooddum", "chatFont.fnt");
+    auto subTitle = CCLabelBMFont::create("Dev: Juzu Team | Idea: spu7nix & coopertooddum", "chatFont.fnt");
     subTitle->setPosition({ winSize.width / 2.0f, winSize.height - 42.0f });
     subTitle->setScale(0.55f);
     subTitle->setOpacity(180);

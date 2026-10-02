@@ -1,16 +1,9 @@
 {
-  "geode": "3.1.0",
-  "id": "puttipongnark2558-creator.3d_importer",
-  "version": "v1.0.0",
-  "name": "3D Importer",
-  "developer": "puttipongnark2558-creator",
-  "description": "Imports 3D models from Blender into Geometry Dash.",
-  "repository": "https://github.com/puttipongnark2558-creator/3d-importer",
-  "tags": ["creator", "editor"],
-  "credits": {
-    "Idea": "misterlope, coopertooddum, spu7nix",
-    "Motivation": "coldsandgamer, toopter",
-    "Code Checked By": "Gemini",
-    "Special Note": "Thanks for reading. If you are coldsandgamer, please forgive me, and to others, thank you!"
-  }
+    "geode": "3.1.0",
+    "version": "v1.0.0",
+    "id": "puttipong.3d_importer",
+    "name": "3D Model Importer",
+    "developer": "Juzu Team",
+    "description": "Imports 3D .OBJ files into Geometry Dash level editor as blocks/objects.",
+    "repository": "https://github.com/puttipongnark2558-creator/3d-importer"
 }

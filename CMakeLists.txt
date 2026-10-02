@@ -1,13 +1,11 @@
-cmake_minimum_required(VERSION 3.13)
-set(CMAKE_CXX_STANDARD 20)
+cmake_minimum_required(VERSION 3.20)
 
-project(3d-importer)
+include(FetchContent)
+
+project(3d-importer VERSION 1.0.0 LANGUAGES CXX)
 
 find_package(Geode REQUIRED)
 
-add_geode_mod(
-    3d-importer
-    "puttipongnark2558-creator.3d_importer"
-    src/main.cpp
-    src/Import3DPopup.cpp
-)
+setup_geode_mod(3d-importer)
+
+add_subdirectory(src)
